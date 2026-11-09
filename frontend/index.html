@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <title>Cálculo de Integrales</title>
+    </head>
+<body>
+    <h2>Cálculo de Integrales</h2>
+
+    <label>Función:</label>
+    <input type="text" id="funcion" placeholder="Ej: X^2, sin(X), ...">
+
+    <br><br>
+
+    <label>Límite inferior:</label>
+    <input type="number" id="a">
+
+    <br><br>
+
+    <label>Límite superior:</label>
+    <input type="number" id="b">
+
+    <br><br>
+
+    <button id="botonConsultar" onclick="consultar()">
+        Calcular
+    </button>
+
+    <hr>
+
+    <p id="primitiva"></p>
+    <p id="area"></p>
+
+    <script src="./script.js"></script>
+</body>
+</html>
