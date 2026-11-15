@@ -1,3 +1,4 @@
+% Integrante: Michelle Stefania Hernandez Flamenco
 % Base de conocimiento: integracion simbolica en una variable.
 
 s(X, F, _) :- var(F), F \== X, !, fail.

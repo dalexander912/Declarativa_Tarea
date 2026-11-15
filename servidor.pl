@@ -10,7 +10,7 @@
    directory_file_path(Dir, frontend, Frontend),
    asserta(user:file_search_path(frontend, Frontend)).
 
-:- http_handler(root(.), http_reply_from_files(frontend, [indexes(['index.html'])]), [prefix]).
+:- http_handler(root(.), http_reply_from_files(frontend(.), [indexes(['index.html'])]), [prefix]).
 :- http_handler(root(consulta), consulta, []).
 
 servidor :- http_server(http_dispatch, [port(8080)]).

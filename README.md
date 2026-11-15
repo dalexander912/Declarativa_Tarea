@@ -47,3 +47,13 @@ Las pruebas comparan integrales definidas con valores conocidos y verifican num�
 Los registros del servidor y los archivos locales de auditoría se excluyen con `.gitignore`.
 
 La interfaz es adaptable a móviles, incluye ejemplos con un clic, cálculo con Enter, estados de carga y mensajes de validación. No requiere servicios externos ni dependencias de frontend.
+
+## Entrega y ejecución desde ZIP
+
+1. Instalar SWI-Prolog con sus bibliotecas estándar HTTP y disponer de un navegador actualizado.
+2. Extraer el ZIP completo. Mantener `base.pl`, `servidor.pl` y la carpeta `frontend` con sus tres archivos juntos.
+3. Abrir una terminal en la carpeta extraída y ejecutar el comando de inicio indicado arriba. Si `swipl` no se reconoce, usar la ruta del ejecutable o la consola de SWI-Prolog.
+4. En la consola de SWI-Prolog también se puede cargar `servidor.pl` con File > Consult y ejecutar `servidor.`.
+5. Abrir http://localhost:8080 en el navegador. El puerto 8080 debe estar libre.
+
+No requiere Python, Node.js, Java, C++, paquetes de frontend ni conexión a Internet para ejecutar la calculadora. Python solo se usó en comprobaciones locales que no forman parte de la entrega. No abrir `index.html` directamente: la interfaz debe accederse a través del servidor Prolog.
