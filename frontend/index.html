@@ -1,36 +1,69 @@
 <!DOCTYPE html>
-<html>
-    <head>
+<html lang="es">
+<head>
     <meta charset="UTF-8">
-    <title>Cálculo de Integrales</title>
-    </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#174f43">
+    <title>Integral · Calculadora de integrales</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./script.js" defer></script>
+</head>
 <body>
-    <h2>Cálculo de Integrales</h2>
-
-    <label>Función:</label>
-    <input type="text" id="funcion" placeholder="Ej: X^2, sin(X), ...">
-
-    <br><br>
-
-    <label>Límite inferior:</label>
-    <input type="number" id="a">
-
-    <br><br>
-
-    <label>Límite superior:</label>
-    <input type="number" id="b">
-
-    <br><br>
-
-    <button id="botonConsultar" onclick="consultar()">
-        Calcular
-    </button>
-
-    <hr>
-
-    <p id="primitiva"></p>
-    <p id="area"></p>
-
-    <script src="./script.js"></script>
+    <div class="page">
+        <header class="topbar">
+            <a class="brand" href="/" aria-label="Integral, inicio"><span class="brand-icon" aria-hidden="true">∫</span> integral<span class="brand-dot">.</span></a>
+            <span class="project-label">PROGRAMACIÓN DECLARATIVA <span>2026</span></span>
+        </header>
+        <main>
+            <section class="intro">
+                <p class="eyebrow"><span></span> DEL SÍMBOLO AL RESULTADO</p>
+                <h1>Una función.<br>Todo un <em>resultado.</em></h1>
+                <p class="intro-copy">Encuentra la primitiva y evalúa tu integral entre dos límites. Las matemáticas, un poco más claras.</p>
+            </section>
+            <div class="workspace">
+                <section class="input-panel" aria-labelledby="input-title">
+                    <div class="section-heading"><span class="step">01</span><h2 id="input-title">Define tu integral</h2></div>
+                    <form id="calculadora" novalidate>
+                        <label for="funcion">Función a integrar <span>f(x)</span></label>
+                        <input type="text" id="funcion" placeholder="Ej. X^2 + 3*X" autocomplete="off" spellcheck="false" aria-describedby="function-help" required>
+                        <p class="field-help" id="function-help">Usa <code>X</code> o <code>x</code> y escribe la multiplicación con <code>*</code>.</p>
+                        <div class="limits">
+                            <div><label for="a">Límite inferior <span>a</span></label><input type="number" id="a" step="any" placeholder="0" required></div>
+                            <div><label for="b">Límite superior <span>b</span></label><input type="number" id="b" step="any" placeholder="1" required></div>
+                        </div>
+                        <button class="calculate" id="botonConsultar" type="submit"><span>Calcular integral</span><span aria-hidden="true">↗</span></button>
+                    </form>
+                    <div class="examples">
+                        <p class="small-title">¿POR DÓNDE EMPEZAR? PRUEBA UN EJEMPLO</p>
+                        <div class="example-list">
+                            <button type="button" class="example" data-function="X^2" data-a="0" data-b="3">Potencia <span>x²</span></button>
+                            <button type="button" class="example" data-function="2^(2*X+1)" data-a="0" data-b="1">Exponencial <span>2²ˣ⁺¹</span></button>
+                            <button type="button" class="example" data-function="sin(X)" data-a="0" data-b="3.141592653589793">Seno <span>sin x</span></button>
+                            <button type="button" class="example" data-function="X^(-1)" data-a="1" data-b="2">Logarítmica <span>x⁻¹</span></button>
+                        </div>
+                    </div>
+                </section>
+                <section class="result-panel" aria-labelledby="result-title" aria-busy="false">
+                    <div class="result-top"><div class="section-heading"><span class="step">02</span><h2 id="result-title">Tu resultado</h2></div><span class="status" id="estado">LISTO PARA CALCULAR</span></div>
+                    <div class="empty-state" id="sinResultado"><span class="integral-symbol" aria-hidden="true">∫</span><h3>El siguiente paso está aquí.</h3><p>Escribe una función o elige un ejemplo.<br>Nosotros hacemos el cálculo.</p></div>
+                    <div id="resultado" hidden aria-live="polite" aria-atomic="true">
+                        <p class="result-caption">FUNCIÓN ORIGINAL</p><p class="original-function" id="funcionResultado"></p>
+                        <div class="primitive-box"><p class="result-caption">PRIMITIVA · F(x)</p><p id="primitiva"></p></div>
+                        <div class="value-box"><p class="result-caption">INTEGRAL DEFINIDA</p><p id="area"></p><p id="intervalo"></p></div>
+                    </div>
+                    <p class="error-message" id="error" role="alert" hidden></p>
+                    <p class="result-note"><span aria-hidden="true">ⓘ</span> El valor es el área con signo: F(b) − F(a). Puede ser negativo y no equivale siempre al área geométrica.</p>
+                </section>
+            </div>
+            <section class="guide" aria-labelledby="guide-title">
+                <div><p class="eyebrow">UNA PEQUEÑA GUÍA</p><h2 id="guide-title">Lo que puedes calcular</h2><p>14 tipos de la definición del proyecto, con ejemplos para explorar.</p></div>
+                <div class="guide-content">
+                    <div class="tags"><span>Constantes</span><span>Polinomios</span><span>Sumas y restas</span><span>Exponenciales</span><span>Trigonométricas</span><span>Hiperbólicas</span></div>
+                    <details><summary>Ver sintaxis y límites del cálculo <span aria-hidden="true">+</span></summary><p>Ejemplos: <code>5</code>, <code>X</code>, <code>3*X</code>, <code>X^2</code>, <code>2*sin(X)</code>, <code>X^2+X</code>, <code>X^2-X</code>, <code>2^X</code>, <code>2^(2*X+1)</code>, <code>sin(X)</code>, <code>cos(X)</code>, <code>tan(X)</code>, <code>sinh(X)</code> y <code>cosh(X)</code>.</p><p>Para <code>a^u</code>, la base debe ser positiva y el exponente lineal: <code>u=m*x+c</code>. También se admite <code>X^(-1)</code> y <code>sh(X)</code> como alias de <code>sinh(X)</code>. Los límites deben estar dentro del dominio, sin atravesar singularidades. Las funciones trigonométricas usan radianes. No se resuelve cualquier función arbitraria.</p></details>
+                </div>
+            </section>
+        </main>
+        <footer><span>PROYECTO FINAL · CICLO 02/2026</span></footer>
+    </div>
 </body>
 </html>

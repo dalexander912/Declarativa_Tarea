@@ -1,0 +1,6 @@
+# Archivos locales de verificacion y ejecucion
+/resultados_pruebas.json
+/servidor.stderr.log
+/servidor.stdout.log
+/VERIFICACION_PROYECTO.md
+/verificar_proyecto.py
