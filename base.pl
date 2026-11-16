@@ -1,4 +1,7 @@
-% Integrante: Michelle Stefania Hernandez Flamenco
+% Integrante: Michelle Stefania Hernandez Flamenco 00381721
+% Integrante: Ronald Francisco Rivas Diaz 00131321
+% Integrante: Daniel Alexander Armas Domínguez 00232622 
+% Integrante: Karen Elizabeth Rodas Escobar 00226013
 % Base de conocimiento: integracion simbolica en una variable.
 
 s(X, F, _) :- var(F), F \== X, !, fail.
